@@ -1,0 +1,22 @@
+  
+{
+    "name": "rabiul/wp-vue-kickstart",
+    "description": "An WordPress plugin starter with Vue Js.",
+    "authors": [
+        {
+            "name": "MD. Rabiul Islam Robi",
+            "email": "robizmailbox@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "WPVK\\Admin\\": "admin/",
+            "WPVK\\Frontend\\": "frontend/",
+            "WPVK\\Includes\\": "includes/"
+        },
+        "files": [ "helpers/helpers.php" ]
+    },
+    "require-dev": {
+    }
+}
