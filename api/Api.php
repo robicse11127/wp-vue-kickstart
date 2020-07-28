@@ -2,5 +2,5 @@
 namespace WPVK\Api;
 
 class Api {
-    
+
 }
