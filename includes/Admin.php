@@ -8,6 +8,13 @@ class Admin {
      */
     public function __construct() {
         add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'load_script' ] );
+    }
+
+    public function load_script() {
+        wp_enqueue_script( 'wpvk-manifest', WPVK_PLUGIN_URL . 'assets/js/manifest.js', [], rand(), true );
+        wp_enqueue_script( 'wpvk-vendor', WPVK_PLUGIN_URL . 'assets/js/vendor.js', [ 'wpvk-manifest' ], rand(), true );
+        wp_enqueue_script( 'wpvk-admin', WPVK_PLUGIN_URL . 'assets/js/admin.js', [ 'wpvk-vendor' ], rand(), true );
     }
 
     /**
@@ -26,7 +33,7 @@ class Admin {
             $capability,
             $slug,
             [ $this, 'menu_page_template' ],
-            'dashicon-text'
+            'dashicons-buddicons-replies'
         );
 
         if( current_user_can( $capability )  ) {
@@ -34,7 +41,7 @@ class Admin {
             $submenu[ $slug ][] = [ __( 'Settings', 'textdomain' ), $capability, 'admin.php?page=' . $slug . '#/settings' ];
         }
 
-        add_action( 'load-' . $hook, [ $this, 'init_hooks' ] );
+        // add_action( 'load-' . $hook, [ $this, 'init_hooks' ] );
     }
 
     /**

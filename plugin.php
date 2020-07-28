@@ -5,17 +5,21 @@
  * @package         WP_Vue_KickStart
  *
  * Plugin Name: WP Vue KickStart
- * Plugin URI : https: //wp-vue-kickstart.com
- * Author     : Md. Rabiul Islam Robi
- * Author URI : https: //robizstroy.me
- * Description: An WordPress plugin starter with Vue JS
- * Version    : 1.0.0
- * License    : GPLv3 or later
- * License URI: http : //www.gnu.org/licenses/gpl-3.0.html
+ * Plugin URI: https://wp-vue-kickstart.com
+ * Description: A wp vue starter for plugin development.
+ * Version: 1.0.0
+ * Author: Md. Rabiul Islam Robi
+ * Author URI: https://robizstory.me
+ * License: GPL v3
  * Text-Domain: textdomain
  */
 
 if( ! defined( 'ABSPATH' ) ) exit(); // No direct access allowed
+
+/**
+ * Require Autoloader
+ */
+require_once 'vendor/autoload.php';
 
 use WPVK\Includes\Admin;
 use WPVK\Includes\Assets;
@@ -91,18 +95,9 @@ final class WP_Vue_Kickstart {
      */
     public function init_plugin() {
         // init
-    }
-
-    /**
-     * Init Classess
-     * @since 1.0.0
-     */
-    public function init_classes() {
-
         new Admin();
         new Frontend();
-        new Assets();
-
+        // new Assets();
     }
 
 }

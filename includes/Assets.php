@@ -30,7 +30,7 @@ class Assets {
             $in_footer = isset( $script[ 'in_footer' ] ) ? $script[ 'in_footer' ] : false;
             $version   = isset( $script[ 'version' ] ) ? $script[ 'version' ] : WPVK_VERSION;
 
-            wp_regsiter_script( $handle, $script[ 'src' ], $deps, $version, $in_footer );
+            wp_register_script( $handle, $script[ 'src' ], $deps, $version, $in_footer );
         }
     }
 
@@ -65,7 +65,7 @@ class Assets {
                 'version'   => \filemtime( WPVK_PLUGIN_PATH . '/assets/js/admin.js' ),
                 'in_footer' => true
             ],
-            'wpvk-frintend' => [
+            'wpvk-frontend' => [
                 'src'       => WPVK_PLUGIN_URL . '/assets/js/frontend.js',
                 'deps'      => [ 'jquery', 'wpvk-vender' ],
                 'version'   => \filemtime( WPVK_PLUGIN_PATH . '/assets/js/frontend.js' ),

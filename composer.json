@@ -1,4 +1,4 @@
-  
+
 {
     "name": "rabiul/wp-vue-kickstart",
     "description": "An WordPress plugin starter with Vue Js.",
@@ -13,9 +13,9 @@
         "psr-4": {
             "WPVK\\Admin\\": "admin/",
             "WPVK\\Frontend\\": "frontend/",
-            "WPVK\\Includes\\": "includes/"
-        },
-        "files": [ "helpers/helpers.php" ]
+            "WPVK\\Includes\\": "includes/",
+            "WPVK\\Api\\": "api/"
+        }
     },
     "require-dev": {
     }
