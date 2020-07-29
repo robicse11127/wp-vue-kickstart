@@ -6,4 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WPVK\\Api\\Api' => $baseDir . '/api/Api.php',
+    'WPVK\\Includes\\Admin' => $baseDir . '/includes/Admin.php',
+    'WPVK\\Includes\\Assets' => $baseDir . '/includes/Assets.php',
+    'WPVK\\Includes\\Frontend' => $baseDir . '/includes/Frontend.php',
 );

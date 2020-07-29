@@ -11,6 +11,7 @@ class ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3
         array (
             'WPVK\\Includes\\' => 14,
             'WPVK\\Frontend\\' => 14,
+            'WPVK\\Api\\' => 9,
             'WPVK\\Admin\\' => 11,
         ),
     );
@@ -24,10 +25,21 @@ class ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3
         array (
             0 => __DIR__ . '/../..' . '/frontend',
         ),
+        'WPVK\\Api\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api',
+        ),
         'WPVK\\Admin\\' => 
         array (
             0 => __DIR__ . '/../..' . '/admin',
         ),
+    );
+
+    public static $classMap = array (
+        'WPVK\\Api\\Api' => __DIR__ . '/../..' . '/api/Api.php',
+        'WPVK\\Includes\\Admin' => __DIR__ . '/../..' . '/includes/Admin.php',
+        'WPVK\\Includes\\Assets' => __DIR__ . '/../..' . '/includes/Assets.php',
+        'WPVK\\Includes\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -35,6 +47,7 @@ class ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3::$classMap;
 
         }, null, ClassLoader::class);
     }

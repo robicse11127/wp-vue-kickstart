@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'WPVK\\Includes\\' => array($baseDir . '/includes'),
     'WPVK\\Frontend\\' => array($baseDir . '/frontend'),
+    'WPVK\\Api\\' => array($baseDir . '/api'),
     'WPVK\\Admin\\' => array($baseDir . '/admin'),
 );
