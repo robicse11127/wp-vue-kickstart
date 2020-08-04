@@ -65,8 +65,7 @@ class Settings_Route extends WP_REST_Controller  {
      */
     public function create_items( $request ) {
         $response = [
-            'name' => $request[ 'name' ],
-            'email' => $request[ 'email' ]
+            'textfield' => $request[ 'textfield' ],
         ];
 
         $response = rest_ensure_response( $response );

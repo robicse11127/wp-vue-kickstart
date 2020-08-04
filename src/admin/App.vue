@@ -1,17 +1,14 @@
 <template>
     <div id="vue-backend-app">
         <h1>WP Vue KickStart</h1>
-        <general-tab></general-tab>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import GeneralTab from './components/GeneralTab.vue'
+// import GeneralTab from './components/GeneralTab.vue'
 export default {
     name: 'App',
-    components: {
-        'general-tab': GeneralTab
-    }
 }
 </script>
 
