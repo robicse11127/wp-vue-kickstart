@@ -1,0 +1,14 @@
+form {
+    position: relative;
+    width: 48%;
+    height: auto;
+    box-sizing: border-box;
+    .form-row {
+        width: 100%;
+        input, label {
+            display: block;
+            width: 100%;
+            margin: 10px 0px;
+        }
+    }
+}

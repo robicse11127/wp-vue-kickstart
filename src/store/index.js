@@ -7,9 +7,16 @@ import { actions } from './actions'
 
 Vue.use( Vuex )
 
-export default  new Vuex.Store({
+export default new Vuex.Store({
     state: {
-
+        settings: {
+            general: {
+                firstname: '',
+                lastname: '',
+                email: ''
+            }
+        },
+        loadingText: 'Save Settings'
     },
     actions,
     getters,

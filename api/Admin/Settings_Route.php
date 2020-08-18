@@ -41,13 +41,13 @@ class Settings_Route extends WP_REST_Controller  {
      * Get items response
      */
     public function get_items( $request ) {
-        $items = [
-            'foo' => 'bar'
+        $response = [
+            'firstname' => get_option( 'wpvk_settings_firstname', true ),
+            'lastname'  => get_option( 'wpvk_settings_lastname', true ),
+            'email'     => get_option( 'wpvk_settings_email', true ),
         ];
 
-        $response = rest_ensure_response( $items );
-
-        return $response;
+        return rest_ensure_response( $response );
     }
 
     /**
@@ -57,6 +57,7 @@ class Settings_Route extends WP_REST_Controller  {
         // if( current_user_can( 'administrator' ) ) {
         //     return true;
         // }
+
         return true;
     }
 
@@ -64,13 +65,25 @@ class Settings_Route extends WP_REST_Controller  {
      * Create item response
      */
     public function create_items( $request ) {
+
+        // Data validation
+        $firstname = isset( $request['firstname'] ) ? sanitize_text_field( $request['firstname'] ): '';
+        $lastname  = isset( $request['lastname'] ) ? sanitize_text_field( $request['lastname'] )  : '';
+        $email     = isset( $request['email'] ) && is_email( $request['email'] ) ? sanitize_email( $request['email'] ) : '';
+
+        // Save option data into WordPress
+        update_option( 'wpvk_settings_firstname', $firstname );
+        update_option( 'wpvk_settings_lastname', $lastname );
+        update_option( 'wpvk_settings_email', $email );
+
         $response = [
-            'textfield' => $request[ 'textfield' ],
+            'firstname' => $firstname,
+            'lastname'  => $lastname,
+            'email'     => $email
         ];
 
-        $response = rest_ensure_response( $response );
-
-        return $response;
+        return rest_ensure_response( $response );
+        
     }
 
     /**

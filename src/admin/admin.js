@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import store from '../store/index'
 import App from './App.vue'
 import Settings from './components/pages/Settings.vue'
+import TabNavigation from './components/tabs/Navigation.vue'
 import GeneralTab from './components/tabs/GeneralTab.vue'
 import AnotherTab from './components/tabs/AnotherTab.vue'
 import VueRouter from 'vue-router'
@@ -13,13 +14,13 @@ Vue.use( Router )
 
 const routes = [
     {
-        path: '/', component: GeneralTab,
+        path: '/', components: { default: GeneralTab, tab: TabNavigation },
     },
     {
-        path: '/another', component: AnotherTab,
+        path: '/another', components: { default: AnotherTab, tab: TabNavigation },
     },
     {
-        path: '/settings', component: Settings,
+        path: '/settings', components: { default: Settings },
     },
 ]
 

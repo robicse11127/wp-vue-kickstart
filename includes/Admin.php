@@ -8,13 +8,39 @@ class Admin {
      */
     public function __construct() {
         add_action( 'admin_menu', [ $this, 'admin_menu' ] );
-        add_action( 'admin_enqueue_scripts', [ $this, 'load_script' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'register_scripts_styles' ] );
     }
 
-    public function load_script() {
-        wp_enqueue_script( 'wpvk-manifest', WPVK_PLUGIN_URL . 'assets/js/manifest.js', [], rand(), true );
-        wp_enqueue_script( 'wpvk-vendor', WPVK_PLUGIN_URL . 'assets/js/vendor.js', [ 'wpvk-manifest' ], rand(), true );
-        wp_enqueue_script( 'wpvk-admin', WPVK_PLUGIN_URL . 'assets/js/admin.js', [ 'wpvk-vendor' ], rand(), true );
+    public function register_scripts_styles() {
+        $this->load_scripts();
+        $this->load_styles();
+    }
+
+    /**
+     * Load Scripts
+     *
+     * @return void
+     */
+    public function load_scripts() {
+        wp_register_script( 'wpvk-manifest', WPVK_PLUGIN_URL . 'assets/js/manifest.js', [], rand(), true );
+        wp_register_script( 'wpvk-vendor', WPVK_PLUGIN_URL . 'assets/js/vendor.js', [ 'wpvk-manifest' ], rand(), true );
+        wp_register_script( 'wpvk-admin', WPVK_PLUGIN_URL . 'assets/js/admin.js', [ 'wpvk-vendor' ], rand(), true );
+
+        wp_enqueue_script( 'wpvk-manifest' );
+        wp_enqueue_script( 'wpvk-vendor' );
+        wp_enqueue_script( 'wpvk-admin' );
+
+        wp_localize_script( 'wpvk-admin', 'wpvkAdminLocalizer', [
+            'adminUrl'  => admin_url( '/' ),
+            'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
+            'apiUrl'    => home_url( '/wp-json' ),
+        ] );
+    }
+
+    public function load_styles() {
+        wp_register_style( 'wpvk-admin', WPVK_PLUGIN_URL . 'assets/css/admin.css' );
+
+        wp_enqueue_style( 'wpvk-admin' );
     }
 
     /**

@@ -23,7 +23,6 @@ require_once 'vendor/autoload.php';
 
 use WPVK\Api\Api;
 use WPVK\Includes\Admin;
-use WPVK\Includes\Assets;
 use WPVK\Includes\Frontend;
 
 final class WP_Vue_Kickstart {
@@ -98,7 +97,6 @@ final class WP_Vue_Kickstart {
         // init
         new Admin();
         new Frontend();
-        // new Assets();
         new Api();
     }
 

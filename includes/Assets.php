@@ -5,9 +5,9 @@ class Assets {
 
     public function __construct() {
         if( is_admin() ) {
-            add_action( 'admin_enqueue_scripts', [ $this, 'register' ] );
+            add_action( 'admin_enqueue_scripts', [ $this, 'register' ], 5 );
         }else {
-            add_action( 'wp_enqueue_scripts', [ $this, 'register' ] );
+            add_action( 'wp_enqueue_scripts', [ $this, 'register' ], 5 );
         }
     }
 
@@ -54,14 +54,21 @@ class Assets {
         $prefix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.min' : '';
 
         $scripts = [
+            'wpvk-manifest' => [
+                'src'       => WPVK_PLUGIN_URL . '/assets/js/manifest.js',
+                'deps'      => [],
+                'version'   => \filemtime( WPVK_PLUGIN_PATH . '/assets/js/manifest.js' ),
+                'in_footer' => true
+            ],
             'wpvk-vendor' => [
                 'src'       => WPVK_PLUGIN_URL . '/assets/js/vendor.js',
+                'deps'      => [ 'wpvk-manifest' ],
                 'version'   => \filemtime( WPVK_PLUGIN_PATH . '/assets/js/vendor.js' ),
                 'in_footer' => true
             ],
             'wpvk-admin' => [
                 'src'       => WPVK_PLUGIN_URL . '/assets/js/admin.js',
-                'deps'      => [ 'jquery', 'wpvk-vender' ],
+                'deps'      => [ 'wpvk-vender' ],
                 'version'   => \filemtime( WPVK_PLUGIN_PATH . '/assets/js/admin.js' ),
                 'in_footer' => true
             ],

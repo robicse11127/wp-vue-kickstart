@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="tab-container">
         <h2>Another Tab</h2>
         <p>{{ message }}</p>
     </div>
